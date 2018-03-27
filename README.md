@@ -1,2 +1,2 @@
 # st-log-cleaner
-Script to remove personal info from syncthing's log files
+Script to remove personal info from log files produced by [Syncthing](https://github.com/syncthing/syncthing)
