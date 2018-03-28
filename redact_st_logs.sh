@@ -1,8 +1,9 @@
 #!/bin/bash
 
-# Version: 2.2
+# Version: 2.3
 # 
 # Changelog: 
+#   v.2.3 - Fix compatibility issue with macOS
 #   v.2.2 - Reformat info printouts
 #   v.2.1 - Protect from paths with spaces breaking the scipt
 #   v.2.0 - Complete rewrite to use config.xml as data source, remove IP info usnig patterns     
@@ -34,7 +35,7 @@ devices=`echo "$config_data" | grep "device id=" | grep name | sort | cut -d"\""
 device_ids=`echo "$devices" | cut -d" " -f1`
 device_ids_short=`echo "$device_ids" | cut -c1-7`
 device_ids_shortest=`echo "$device_ids_short" | cut -c1-5`
-device_names=`echo "$devices" | cut --complement -d' ' -f1`
+device_names=`echo "$devices" | cut -d' ' -f2-`
 
 folders=`echo "$config_data" | grep "folder id=" | sort | cut -d"\"" -f2,4,6 | uniq`
 folder_ids=`echo "$folders" | cut -d"\"" -f1`
