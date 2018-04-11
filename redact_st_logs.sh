@@ -1,8 +1,9 @@
 #!/bin/bash
 
-# Version: 2.3
+# Version: 2.4
 # 
 # Changelog: 
+#   v.2.4 - Allow txt extension for log files
 #   v.2.3 - Fix compatibility issue with macOS
 #   v.2.2 - Reformat info printouts
 #   v.2.1 - Protect from paths with spaces breaking the scipt
@@ -15,10 +16,10 @@ function terminate {
 }
 
 if (( $# != 2 )); then
-    terminate "   ! Error ! : Wrong input parameters!"
-elif [[ "$1" != *.xml || "$2" != *.log ]]; then
-    terminate "   ! Error ! : Wrong input parameters!"
-elif [[ ! -f "$1" || ! -f "$2" ]]; then 
+    terminate "   ! Error ! : Wrong input parameters"
+elif [[ "$1" != *.xml || ( "$2" != *.log && "$2" != *.txt ) ]]; then
+    terminate "   ! Error ! : Wrong input parameters"
+elif [[ ! -f "$1" || ! -f "$2" ]]; then
     terminate "   ! Error ! : Input file is not available"
 fi
 
